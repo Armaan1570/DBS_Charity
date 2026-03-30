@@ -1,0 +1,458 @@
+/* =============================================
+   CharityHub — Main Stylesheet
+   Theme: Luxury Dark with Gold Accents
+   Font: Playfair Display + DM Sans
+   ============================================= */
+
+:root {
+    --bg:          #0e0e12;
+    --bg2:         #15151c;
+    --bg3:         #1e1e28;
+    --card:        #1a1a24;
+    --border:      #2e2e40;
+    --gold:        #c9a84c;
+    --gold-light:  #e8c96d;
+    --gold-dim:    rgba(201,168,76,0.15);
+    --red:         #e05252;
+    --green:       #4caf6e;
+    --blue:        #5b8dee;
+    --text:        #e8e4dc;
+    --text-muted:  #8a8499;
+    --radius:      12px;
+    --radius-sm:   7px;
+    --shadow:      0 4px 24px rgba(0,0,0,0.45);
+    --shadow-gold: 0 0 20px rgba(201,168,76,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    min-height: 100vh;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 0;
+    background: rgba(14,14,18,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 62px;
+}
+
+.brand {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--gold); text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-right: auto;
+    flex-shrink: 0;
+}
+.brand-icon { font-size: 1.1rem; }
+
+.nav-links {
+    display: flex; list-style: none; gap: 0; height: 100%;
+    align-items: stretch;
+}
+.nav-links li { display: flex; }
+.nav-links a {
+    display: flex; align-items: center;
+    padding: 0 1.1rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.88rem; font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+.nav-report { color: var(--gold-light) !important; }
+
+/* =============================================
+   PAGE WRAPPER
+   ============================================= */
+.page-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+}
+
+/* =============================================
+   PAGE HEADER
+   ============================================= */
+.page-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between; flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+.page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header p { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
+
+/* =============================================
+   STAT CARDS (Dashboard)
+   ============================================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+.stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.3rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+.stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+.stat-card .stat-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+.stat-card .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+    line-height: 1;
+}
+.stat-card .stat-label {
+    color: var(--text-muted); font-size: 0.82rem; margin-top: 4px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* =============================================
+   CARDS / PANELS
+   ============================================= */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; color: var(--text);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.card h2::after {
+    content: '';
+    flex: 1; height: 1px; background: var(--border); margin-left: 0.5rem;
+}
+
+/* =============================================
+   SEARCH & TOOLBAR
+   ============================================= */
+.toolbar {
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1.4rem;
+}
+.search-box {
+    display: flex; align-items: center; gap: 0;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    flex: 1; max-width: 380px;
+}
+.search-box input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--text); padding: 0.55rem 0.9rem;
+    font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
+}
+.search-box button {
+    background: var(--gold-dim); border: none;
+    color: var(--gold); padding: 0.55rem 1rem;
+    cursor: pointer; font-size: 0.9rem; transition: background 0.2s;
+}
+.search-box button:hover { background: var(--gold); color: #000; }
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.btn-gold {
+    background: var(--gold); color: #0e0e12;
+    border-color: var(--gold);
+}
+.btn-gold:hover { background: var(--gold-light); }
+.btn-outline {
+    background: transparent; color: var(--text-muted);
+    border-color: var(--border);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-danger {
+    background: transparent; color: var(--red);
+    border-color: rgba(224,82,82,0.35);
+}
+.btn-danger:hover { background: rgba(224,82,82,0.12); }
+.btn-sm { padding: 0.35rem 0.75rem; font-size: 0.82rem; }
+.btn-nav { background: var(--bg3); border-color: var(--border); color: var(--text-muted); }
+.btn-nav:hover { border-color: var(--gold); color: var(--gold); }
+
+/* =============================================
+   TABLE
+   ============================================= */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-sm); }
+table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.88rem;
+}
+thead th {
+    background: var(--bg2);
+    color: var(--text-muted);
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; font-size: 0.78rem;
+    padding: 0.75rem 1rem; text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+tbody tr {
+    border-bottom: 1px solid rgba(46,46,64,0.6);
+    transition: background 0.15s;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg3); }
+tbody td {
+    padding: 0.7rem 1rem; vertical-align: middle;
+    color: var(--text);
+}
+.td-actions { display: flex; gap: 6px; align-items: center; }
+
+/* Navigation controls for first/last */
+.nav-controls {
+    display: flex; gap: 0.5rem; align-items: center;
+    flex-wrap: wrap; margin-top: 1rem;
+}
+.nav-controls span {
+    color: var(--text-muted); font-size: 0.85rem; padding: 0 0.5rem;
+}
+
+/* =============================================
+   BADGES / STATUS
+   ============================================= */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 50px;
+    font-size: 0.76rem; font-weight: 600;
+    letter-spacing: 0.04em;
+}
+.badge-green  { background: rgba(76,175,110,0.15); color: var(--green); }
+.badge-gold   { background: var(--gold-dim);       color: var(--gold); }
+.badge-red    { background: rgba(224,82,82,0.15);  color: var(--red); }
+.badge-blue   { background: rgba(91,141,238,0.15); color: var(--blue); }
+.badge-muted  { background: rgba(138,132,153,0.15);color: var(--text-muted); }
+
+/* =============================================
+   FORMS (MODAL)
+   ============================================= */
+.modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(5,5,8,0.82);
+    backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    width: 100%; max-width: 560px;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: var(--shadow);
+    animation: modalIn 0.25s ease;
+}
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+}
+.modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; color: var(--gold);
+    margin-bottom: 1.4rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.form-row.single { grid-template-columns: 1fr; }
+.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 0.9rem; }
+.form-group label {
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--text-muted); letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-group select option { background: var(--bg2); }
+.form-actions {
+    display: flex; gap: 0.75rem; justify-content: flex-end;
+    margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border);
+}
+
+/* =============================================
+   ALERTS
+   ============================================= */
+.alert {
+    padding: 0.8rem 1.1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.alert-success { background: rgba(76,175,110,0.12); border: 1px solid rgba(76,175,110,0.3); color: var(--green); }
+.alert-error   { background: rgba(224,82,82,0.12);  border: 1px solid rgba(224,82,82,0.3);  color: var(--red); }
+
+/* =============================================
+   DASHBOARD HERO
+   ============================================= */
+.hero {
+    background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    position: relative; overflow: hidden;
+}
+.hero::before {
+    content: '❤';
+    position: absolute; right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 8rem; opacity: 0.04; pointer-events: none;
+}
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900;
+    color: var(--text); margin-bottom: 0.5rem;
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero p { color: var(--text-muted); max-width: 500px; }
+
+/* =============================================
+   REPORT PAGE
+   ============================================= */
+.report-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+.progress-bar-wrap { margin: 0.35rem 0; }
+.progress-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.82rem; color: var(--text-muted); margin-bottom: 5px;
+}
+.progress-track {
+    background: var(--bg2);
+    border-radius: 50px; height: 8px; overflow: hidden;
+}
+.progress-fill {
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    height: 100%; border-radius: 50px;
+    transition: width 1s ease;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+    .navbar { padding: 0 1rem; gap: 0; }
+    .nav-links a { padding: 0 0.65rem; font-size: 0.8rem; }
+    .page-wrap { padding: 1.5rem 1rem 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .report-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 1.2rem 2rem;
+    text-align: center;
+}
+.footer-inner {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.75rem; flex-wrap: wrap;
+    color: var(--text-muted); font-size: 0.83rem;
+}
+.footer-inner .brand-icon { color: var(--gold); }
+.footer-sub { opacity: 0.5; }
+
+/* =============================================
+   UTILITY
+   ============================================= */
+.text-gold   { color: var(--gold); }
+.text-muted  { color: var(--text-muted); }
+.text-green  { color: var(--green); }
+.text-red    { color: var(--red); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mb-0 { margin-bottom: 0; }
+.fw-bold { font-weight: 700; }
+.monospace { font-family: monospace; font-size: 0.9em; }
